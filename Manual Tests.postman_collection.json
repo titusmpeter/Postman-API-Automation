@@ -1,0 +1,559 @@
+{
+	"info": {
+		"_postman_id": "1d720888-4ca3-4da6-8a1d-55ee63271e9d",
+		"name": "Manual Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21913060",
+		"_collection_link": "https://planetary-crescent-874641.postman.co/workspace/APITesting~50575614-9213-4857-9c6c-68d4deed7599/collection/21913060-1d720888-4ca3-4da6-8a1d-55ee63271e9d?action=share&creator=21913060&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "TC01_CreateAndFetchResource",
+			"item": [
+				{
+					"name": "https://thetestingworldapi.com/api/studentsDetails/",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"New record created successfully\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  //\"id\": 116600,\r\n  \"first_name\": \"Nene\",\r\n  \"middle_name\": \"Mandosi\",\r\n  \"last_name\": \"Tchakou\",\r\n  \"date_of_birth\": \"01/01/1955\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://thetestingworldapi.com/api/studentsDetails/",
+							"protocol": "https",
+							"host": [
+								"thetestingworldapi",
+								"com"
+							],
+							"path": [
+								"api",
+								"studentsDetails",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://thetestingworldapi.com/api/studentsDetails/",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Students details retrieved successfully\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 0.5 seconds\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"/*pm.environment.set(\"variable_key\", \"variable_value\");\r",
+									"pm.environment.get(\"variable_key\");\r",
+									"pm.environment.unset(\"variable_key\"); */\r",
+									"\r",
+									"pm.test(\"Header contains server\", function () {\r",
+									"    pm.response.to.have.header(\"Server\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Correct version of server in header\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Server\")).to.eql(\"Microsoft-IIS/10.0\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "javascript"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://thetestingworldapi.com/api/studentsDetails/",
+							"protocol": "https",
+							"host": [
+								"thetestingworldapi",
+								"com"
+							],
+							"path": [
+								"api",
+								"studentsDetails",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TC02_UpdateExistingResource",
+			"item": [
+				{
+					"name": "https://thetestingworldapi.com/api/studentsDetails/",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"New record created successfully\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  //\"id\": 116600,\r\n  \"first_name\": \"Lokassa\",\r\n  \"middle_name\": \"Ya\",\r\n  \"last_name\": \"M'bongo\",\r\n  \"date_of_birth\": \"01/01/1950\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://thetestingworldapi.com/api/studentsDetails/",
+							"protocol": "https",
+							"host": [
+								"thetestingworldapi",
+								"com"
+							],
+							"path": [
+								"api",
+								"studentsDetails",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://thetestingworldapi.com/api/studentsDetails/ 7456020",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Student record retrived successfully\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Retrieved record has first name\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Lokassa\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Correct last name in JSON response\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.last_name).to.eql(\"M'bongo\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 0.5 secs\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"OK in status\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://thetestingworldapi.com/api/studentsDetails/7457016",
+							"protocol": "https",
+							"host": [
+								"thetestingworldapi",
+								"com"
+							],
+							"path": [
+								"api",
+								"studentsDetails",
+								"7457016"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://thetestingworldapi.com/api/addresses/",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"New record created successfully\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Permanent_Address\": {\r\n    \"House_Number\": \"RH15PY\",\r\n    \"City\": \"Crawley\",\r\n    \"State\": \"Weest Susssex\",\r\n    \"Country\": \"Anglia\",\r\n    \"PhoneNumber\": [\r\n      {\r\n        \"Std_Code\": \"001\",\r\n        \"Home\": \"West Wing Hostel\",\r\n        \"Mobile\": \"11223344\"\r\n      },\r\n      {\r\n        \"Std_Code\": \"001\",\r\n        \"Home\": \"Crawley\",\r\n        \"Mobile\": \"11223344\"\r\n      }\r\n    ]\r\n  },\r\n  \"Current_Address\": {\r\n    \"House_Number\": \"RH5YPH\",\r\n    \"City\": \"Croydon\",\r\n    \"State\": \"Surrey\",\r\n    \"Country\": \"Anglia\",\r\n    \"PhoneNumber\": [\r\n      {\r\n        \"Std_Code\": \"001\",\r\n        \"Home\": \"Croydon\",\r\n        \"Mobile\": \"44332211\"\r\n      },\r\n      {\r\n        \"Std_Code\": \"001\",\r\n        \"Home\": \"Britanny\",\r\n        \"Mobile\": \"33221100\"\r\n      }\r\n    ]\r\n  },\r\n  \"stId\": \"7457016\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://thetestingworldapi.com/api/addresses/",
+							"protocol": "https",
+							"host": [
+								"thetestingworldapi",
+								"com"
+							],
+							"path": [
+								"api",
+								"addresses",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://thetestingworldapi.com/api/FinalStudentDetails/7456992",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Correct Home address in JSON path\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.Address[0].Permanent_Address.PhoneNumber[1].Home).to.eql(\"Crawley\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://thetestingworldapi.com/api/FinalStudentDetails/7457016",
+							"protocol": "https",
+							"host": [
+								"thetestingworldapi",
+								"com"
+							],
+							"path": [
+								"api",
+								"FinalStudentDetails",
+								"7457016"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TC03_UpdateAndDeleteResource",
+			"item": [
+				{
+					"name": "https://thetestingworldapi.com/api/studentsDetails/",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"New record created successfully\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  //\"id\": 116600,\r\n  \"first_name\": \"Nene\",\r\n  \"middle_name\": \"Mandosi\",\r\n  \"last_name\": \"Tchakou\",\r\n  \"date_of_birth\": \"01/01/1950\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://thetestingworldapi.com/api/studentsDetails/",
+							"protocol": "https",
+							"host": [
+								"thetestingworldapi",
+								"com"
+							],
+							"path": [
+								"api",
+								"studentsDetails",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://thetestingworldapi.com/api/studentsDetails/7456021",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Record updated successfully\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 7457023,\r\n  \"first_name\": \"Nene\",\r\n  \"middle_name\": \"Ya\",\r\n  \"last_name\": \"Tchakou Tchakou\",\r\n  \"date_of_birth\": \"01/01/1955\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://thetestingworldapi.com/api/studentsDetails/7457023",
+							"protocol": "https",
+							"host": [
+								"thetestingworldapi",
+								"com"
+							],
+							"path": [
+								"api",
+								"studentsDetails",
+								"7457023"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://thetestingworldapi.com/api/studentsDetails/7457018",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Resource deleted successfully\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"true\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://thetestingworldapi.com/api/studentsDetails/7457023",
+							"protocol": "https",
+							"host": [
+								"thetestingworldapi",
+								"com"
+							],
+							"path": [
+								"api",
+								"studentsDetails",
+								"7457023"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://thetestingworldapi.com/api/studentsDetails/ 7456020",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Resource does not found\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"false\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"200 OK in status\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://thetestingworldapi.com/api/studentsDetails/7457023",
+							"protocol": "https",
+							"host": [
+								"thetestingworldapi",
+								"com"
+							],
+							"path": [
+								"api",
+								"studentsDetails",
+								"7457023"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TC04_NegativeTest",
+			"item": [
+				{
+					"name": "https://thetestingworldapi.com/api/studentsDetails/",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"400 Bad request\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Invalid JSON Syntax\", function () {\r",
+									"    pm.response.to.have.status(\"Bad Request\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  //\"id\": 116600,\r\n  \"first_name\": \"Lokassa\",\r\n  \"middle_name\": \"Ya\",\r\n  \"last_name\": \"M'bongo\",\r\n  \"date_of_birth\": \"01/01/1950\"",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://thetestingworldapi.com/api/studentsDetails/",
+							"protocol": "https",
+							"host": [
+								"thetestingworldapi",
+								"com"
+							],
+							"path": [
+								"api",
+								"studentsDetails",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
