@@ -21,16 +21,160 @@
 									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);\r",
 									"});\r",
 									"\r",
+									"var jsonData = pm.response.json(); //declare json response as a var\r",
+									"var studID = jsonData.id; //declare student id from json path\r",
+									"pm.environment.set(\"studentID\", studID); //set student as an environment var\r",
+									"\r",
+									"var url = pm.environment.get(\"baseUrl\"); //get value from enrironment\r",
+									"pm.globals.set(\"globalURL\", url); //set the value as global var\r",
+									"\r",
+									"console.clear();\r",
+									"console.log(request.data); //print request data in console window\r",
+									"console.log(request.url); //print request URL in console\r",
+									"console.log(request.method); //print http method in console"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  //\"id\": 116600,\r\n  \"first_name\": \"Nene\",\r\n  \"middle_name\": \"Mandosi\",\r\n  \"last_name\": \"Tchakou\",\r\n  \"date_of_birth\": \"01/01/1955\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/studentsDetails/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"studentsDetails",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://thetestingworldapi.com/api/studentsDetails/",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Students details retrieved successfully\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
 									"pm.test(\"Response time is less than 0.5 seconds\", function () {\r",
 									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
 									"});\r",
 									"\r",
-									"var jsonData = pm.response.json(); //save json response\r",
-									"var studID = jsonData.id; //save student id from json path\r",
-									"pm.environment.set(\"studentID\", studID); //set student as an environment var\r",
+									"/* pm.environment.set(\"variable_key\", \"variable_value\");\r",
+									"pm.environment.get(\"variable_key\");\r",
+									"pm.environment.unset(\"variable_key\"); */\r",
 									"\r",
-									"var url = pm.environment.get(\"baseUrl\"); //get value from enrironment\r",
-									"pm.globals.set(\"globalURL\", url); //set the value as global var"
+									"pm.test(\"Header contains server\", function () {\r",
+									"    pm.response.to.have.header(\"Server\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Correct version of server in header\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Server\")).to.eql(\"Microsoft-IIS/10.0\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "javascript"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/studentsDetails/{{studentID}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"studentsDetails",
+								"{{studentID}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TC05B_Request&ResponseObjects",
+			"item": [
+				{
+					"name": "https://thetestingworldapi.com/api/studentsDetails/",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Code within \"test\" tab is executed after the HTTP request is executed and a response received from the server side\r",
+									"//console.clear();\r",
+									"console.log();\r",
+									"\r",
+									"pm.test(\"New record created successfully\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);\r",
+									"});\r",
+									"\r",
+									"var jsData = pm.response.json(); //declare response json as a var\r",
+									"var studID = jsData.id; //declare student id from json path\r",
+									"pm.environment.set(\"studentID\", studID); //set studentID as an environment var\r",
+									"console.log(jsData.middle_name); //print value from response JSON\r",
+									"\r",
+									"//console.log(request.data); //print JSON request data in console window\r",
+									"console.log(request.url); //print request URL in console\r",
+									"console.log(request.method); //print http request method in console\r",
+									"\r",
+									"console.log(responseBody); //print entire response body in the console window\r",
+									"console.log(responseCode.detail); /* //print detailed response code\r",
+									"console.log(responseTime); //print response time in ms\r",
+									"console.log(responseCode.name); //print name of response code\r",
+									"console.log(responseCode.code); //print response code */"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//Code within \"pre-request\" tab is executed before the HTTP request is send and executed on the server side\r",
+									"\r",
+									"console.clear();\r",
+									"postman.setGlobalVariable(\"globalID\",\"001\"); /* //set var before sending http request\r",
+									"console.log(postman.getGlobalVariable(\"globalID\")); //print global var before http request */\r",
+									"console.log(postman.getEnvironmentVariable(\"studentID\")); // print env var before sending http request\r",
+									"\r",
+									"//postman.clearGlobalVariables(); //clears all global variables\r",
+									"postman.clearGlobalVariable(\"globalURL\"); //clears defined global var"
 								],
 								"type": "text/javascript"
 							}
